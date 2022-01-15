@@ -29,25 +29,32 @@ export default class SpotifyOauth extends Component {
   componentDidMount() {
     if(code){
       this.getAuth()
-      
-    //   axios.post('http://localhost:3001/login', {
-    //   code
-    // })
-    // .then(response => {
-    //   window.history.pushState({}, null, '/')
-    //   let res = response.data
-    //   this.setState({ 
-    //     expiresIn: res.expiresIn, 
-    //     accessToken: res.accessToken, 
-    //     refreshToken: res.refreshToken}, () => console.log(this.state)) 
-    // })
-    // .catch(() => {
-    //   window.location = '/'
-    // })
-    debugger;
-    } 
-    
+    }
   }
+
+  componentDidUpdate(prevState){
+    if(prevState.expiresIn !== this.state.expiresIn){
+      this.refreshAuth()
+    }
+  }
+
+  refreshAuth = () => {
+    setTimeout(() => {
+      axios.post('http://localhost:3001/slam', {
+        refresh_token: this.state.refreshToken
+      })
+      .then(response => {
+        window.history.pushState({}, null, '/')
+        this.setState({ 
+          expiresIn: response.data.expiresIn, 
+          accessToken: response.data.accessToken})
+      })
+      .catch(err => {
+        console.log(err)
+        window.location = '/'
+      })
+    }, 5000)
+  };
 
   getAuth = () => {
     axios.post('http://localhost:3001/login', {
@@ -59,9 +66,10 @@ export default class SpotifyOauth extends Component {
       this.setState({ 
         expiresIn: res.expiresIn, 
         accessToken: res.accessToken, 
-        refreshToken: res.refreshToken}, () => console.log(this.state)) 
+        refreshToken: res.refreshToken}) 
     })
-    .catch(() => {
+    .catch(err => {
+      console.log(err)
       window.location = '/'
     })
   }
@@ -69,7 +77,8 @@ export default class SpotifyOauth extends Component {
   render() {
     return (
     <>
-     {!code ? <Login AUTH_URL={AUTH_URL} /> : <Dashboard code={code}/>}
+     {!this.state.accessToken ? <Login AUTH_URL={AUTH_URL} /> : <Dashboard {...this.state}/>}
+     
     </>
     )
   }
