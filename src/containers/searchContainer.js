@@ -1,25 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Search from '../components/searchBar'
+import SearchBar from '../components/search/searchBar'
+import SpotifyTrackSearch from '../components/search/spotifyTrackSearch'
+import ResultsContainer from './resultsContainer'
 
-export class SearchBarContainer extends Component {
+
+export class SearchContainer extends Component {
+
+
   render() {
     return (
       <>
-        <Search />
+        <SearchBar searchInput={this.props.searchInput} results={this.props.results} />
+        <ResultsContainer results={this.props.results} />
+        <SpotifyTrackSearch searchQuery={this.props.searchQuery} searchResults={this.props.searchResults} />
       </>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  return {searchInput: state.searchInput}
+  return {
+    searchQuery: state.searchInput,
+    results: state.searchResults
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    searchInput: searchInput => dispatch({type: "SEARCH", searchInput})
+    searchInput: search => dispatch({type: "SEARCH", search}),
+    searchResults: results => dispatch({type: "SEARCH_RESULTS", results})
   } 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBarContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios' 
 import Login from'./login.js'
-import Dashboard from './dashboard'
+import Dashboard from '../dashboard'
 
 
 const code = new URLSearchParams(window.location.search).get('code')
@@ -69,7 +69,7 @@ export default class SpotifyOauth extends Component {
     })
     .catch(err => {
       console.log(err)
-      window.location = '/'
+      // window.location = '/'
     })
   }
 

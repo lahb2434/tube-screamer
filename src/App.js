@@ -1,5 +1,5 @@
-import SpotifyOauth from './components/spotifyOAuth'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import SpotifyOauth from './components/authorization/spotifyOAuth'
+
 
 function App() {
   return <SpotifyOauth />
