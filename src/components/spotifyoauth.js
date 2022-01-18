@@ -76,7 +76,7 @@ export default class SpotifyOauth extends Component {
   render() {
     return (
     <>
-     {!this.state.accessToken ? <Login AUTH_URL={AUTH_URL} /> : <Dashboard {...this.state}/>}
+     {!this.state.accessToken ? <Login AUTH_URL={AUTH_URL} /> : <Dashboard />}
      
     </>
     )
