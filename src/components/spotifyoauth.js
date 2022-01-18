@@ -40,11 +40,10 @@ export default class SpotifyOauth extends Component {
 
   refreshAuth = () => {
     setTimeout(() => {
-      axios.post('http://localhost:3001/slam', {
+      axios.post('http://localhost:8008/refresh', {
         refresh_token: this.state.refreshToken
       })
       .then(response => {
-        window.history.pushState({}, null, '/')
         this.setState({ 
           expiresIn: response.data.expiresIn, 
           accessToken: response.data.accessToken})
@@ -53,11 +52,11 @@ export default class SpotifyOauth extends Component {
         console.log(err)
         window.location = '/'
       })
-    }, 5000)
+    }, (this.state.expiresIn - 300) * 1000)
   };
 
   getAuth = () => {
-    axios.post('http://localhost:3001/login', {
+    axios.post('http://localhost:8008/login', {
       code
     })
     .then(response => {
