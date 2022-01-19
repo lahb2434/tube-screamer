@@ -1,7 +1,7 @@
 import axios from 'axios' 
 
 export default function SpotifyTrackSearch({searchQuery, searchResults}) {
-  if(searchQuery){
+
     axios.post('http://localhost:8008/search', {
       searchQuery
     })
@@ -22,7 +22,7 @@ export default function SpotifyTrackSearch({searchQuery, searchResults}) {
     .catch(err => {
       console.log(err)
     })
-  }
+  
   
 
   return null;

@@ -1,19 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import SearchBar from '../components/search/searchBar'
-import SpotifyTrackSearch from '../components/search/spotifyTrackSearch'
-import ResultsContainer from './resultsContainer'
+import TrackSearchResults from '../components/search/trackSearchResults'
+
 
 
 export class SearchContainer extends Component {
 
+  componentDidUpdate(prevProps, prevState) {
+    Object.entries(this.props).forEach(([key, val]) =>
+      prevProps[key] !== val && console.log(`Prop '${key}' changed`)
+    );
+    if (this.state) {
+      Object.entries(this.state).forEach(([key, val]) =>
+        prevState[key] !== val && console.log(`State '${key}' changed`)
+      );
+    }
+  }
 
-  render() {
+  
+
+  render() { 
     return (
       <>
-        <SearchBar searchInput={this.props.searchInput} results={this.props.results} />
-        <ResultsContainer results={this.props.results} />
-        <SpotifyTrackSearch searchQuery={this.props.searchQuery} searchResults={this.props.searchResults} />
+        <SearchBar searchResults={this.props.searchResults}/>
+        <TrackSearchResults results={this.props.results} />
       </>
     )
   }
@@ -21,14 +32,12 @@ export class SearchContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    searchQuery: state.searchInput,
     results: state.searchResults
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    searchInput: search => dispatch({type: "SEARCH", search}),
     searchResults: results => dispatch({type: "SEARCH_RESULTS", results})
   } 
 }

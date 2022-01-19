@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import TrackSearchResults from '../components/search/trackSearchResults'
+
 
 export default class ResultsContainer extends Component {
 
-  debugger;
+  createTracks = () => {
+    // this.props.results
+  }
 
   render() {
+    
     return (
       <div>
         
