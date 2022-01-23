@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Form, Stack, Button } from 'react-bootstrap';
 import axios from 'axios' 
-import { Container, Form, Stack, Button } from 'react-bootstrap';
+
 
 export default class SearchBar extends Component {
     state = {
@@ -9,11 +10,14 @@ export default class SearchBar extends Component {
 
     handleOnSubmit(event) {
       event.preventDefault();
+      if(!this.state.searchInput){ 
+        console.log('Look up some stuff')
+      } else 
       axios.post('http://localhost:8008/search', {
         searchQuery: this.state.searchInput
     })
     .then(response => {
-      this.props.searchResults(
+      this.props.searchQuery(
         response.data.map(track => {
           return {
           artist: track.artists[0].name,
@@ -30,9 +34,9 @@ export default class SearchBar extends Component {
     .catch(err => {
       console.log(err)
     })
-      this.setState({
-        searchInput: '',
-      });
+      // this.setState({
+      //   searchInput: '',
+      // });
     }
 
     // componentDidUpdate(prevState){
@@ -63,14 +67,14 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <Container className="my-3">
+      
        <Form onSubmit={(event) => this.handleOnSubmit(event)}>
         <Stack direction="horizontal" gap={3}>
-          <Form.Control className="me-auto" placeholder="Search Artists/Songs" onChange={(e) => this.setState({searchInput: e.target.value})}/>
+          <Form.Control className="me-auto" placeholder="Search Songs" value={this.state.searchInput} onChange={(e) => this.setState({searchInput: e.target.value})}/>
           <Button variant="secondary" type="submit">Submit</Button>
         </Stack>
        </Form>
-      </Container>
+      
     )
   }
 }

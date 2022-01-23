@@ -14,7 +14,7 @@ const AUTH_URL = "https://accounts.spotify.com/authorize?" +
     client_id: clientId,
     response_type: 'code',
     redirect_uri: 'http://localhost:3000/',
-    state: 'hellowhatisgoingdownouthere',
+    state: 'hellowhatisgoingonouthere',
     scope: scope,
   }).toString();
 
@@ -69,14 +69,14 @@ export default class SpotifyOauth extends Component {
     })
     .catch(err => {
       console.log(err)
-      // window.location = '/'
+      window.location = '/'
     })
   }
 
   render() {
     return (
     <>
-     {!this.state.accessToken ? <Login AUTH_URL={AUTH_URL} /> : <Dashboard />}
+     {!this.state.accessToken ? <Login AUTH_URL={AUTH_URL} /> : <Dashboard accessToken={this.state.accessToken}/>}
      
     </>
     )

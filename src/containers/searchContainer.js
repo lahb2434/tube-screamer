@@ -23,8 +23,8 @@ export class SearchContainer extends Component {
   render() { 
     return (
       <>
-        <SearchBar searchResults={this.props.searchResults}/>
-        <TrackSearchResults results={this.props.results} />
+        <SearchBar searchQuery={this.props.searchQuery}/>
+        <TrackSearchResults results={this.props.results} selectTrack={this.props.selectTrack}/>
       </>
     )
   }
@@ -32,13 +32,15 @@ export class SearchContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    results: state.searchResults
+    results: state.searchQuery,
+    trackUri: state.selectTrack
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    searchResults: results => dispatch({type: "SEARCH_RESULTS", results})
+    searchQuery: results => dispatch({type: "SEARCH_RESULTS", results}),
+    selectTrack: trackUri => dispatch({type: "SELECT_TRACK", trackUri})
   } 
 }
 
