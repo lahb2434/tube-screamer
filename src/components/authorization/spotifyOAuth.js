@@ -50,7 +50,7 @@ export default class SpotifyOauth extends Component {
       })
       .catch(err => {
         console.log(err)
-        window.location = '/'
+        // window.location = '/'
       })
     }, (this.state.expiresIn - 300) * 1000)
   };
@@ -69,7 +69,7 @@ export default class SpotifyOauth extends Component {
     })
     .catch(err => {
       console.log(err)
-      window.location = '/'
+      // window.location = '/'
     })
   }
 
