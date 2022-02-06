@@ -57,17 +57,6 @@ export default class Control extends Component {
       </Button>
    
 }
-    
-    //  let boxLabel = document.createElement("label");
-    //  boxLabel.textContent = name;
-    //  let box = document.createElement("input");
-    //  box.type = "checkbox";
-    //  box.checked = node[name];
-    //  box.onchange = _ => node[name] = box.checked;
-
-    //  return [boxLabel, box];
-  
-
 
   render() {
     const{node, name} = this.props;
