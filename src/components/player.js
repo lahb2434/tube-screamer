@@ -4,7 +4,7 @@ import SpotifyPlayer from 'react-spotify-web-playback'
 export default function player({accessToken, trackUri}) {
   // const [play, setPlay] = useState(false)
   
-  return <div className="fixed-bottom">
+  return <div>
     <SpotifyPlayer
       autoPlay={true}
       token={accessToken}

@@ -4,16 +4,15 @@ import Button from 'react-bootstrap/Button'
 export default class Control extends Component {
   
   state = {
-    value: this.props.node.defaults[this.props.name].value
+    value: true
   }
 
   renderControl = (node,name,controlDefaults) => {
     switch (controlDefaults.type) {
       case 'boolean':
-        return this.createCheckbox(node, name);
+        return this.createButton(node, name);
       case 'string':
-        // createCheckbox(node, val, node[name]);
-        break;
+        return this.createSelectInput(node, name);
       default: 
         return this.createSlider(node, name, Math.min(controlDefaults.min || 0), Math.max(controlDefaults.max || 0, controlDefaults.value), controlDefaults.type);
       }
@@ -28,7 +27,7 @@ export default class Control extends Component {
   createSlider = (node, name, min, max, type) => {
    return <div>
       <label>{name}</label>
-      {/* need to work on changing state of value */}
+      {/* need to work on changing value of state, finished */}
       <input 
         type="range" 
         min={min} 
@@ -42,21 +41,50 @@ export default class Control extends Component {
   }
 
   handleButtonClick = (node, name) => {
-    const newValue = this.state.value === false ? true : false
+    const newValue = this.state.value === true ? false : true
     node[name] = newValue
     this.setState({value: newValue})  
   }
 
-  createCheckbox = (node, name) => {
-
+  createButton = (node, name) => {
       return <Button 
-      variant={this.state.value ? 'success' : 'danger'}
-      className="btn-small" 
+      variant={this.state.value ? 'danger' : 'success' }
+      className="btn-small mx-1" 
       onClick={() => this.handleButtonClick(node, name)}>
-        {name === 'bypass' ? this.state.value ? 'ON' : 'OFF' : name}
+        {name === 'bypass' ? this.state.value ? 'OFF' : 'ON' : name}
       </Button>
    
-}
+  }
+
+  handleSelectChange(node, name, e) {
+    node[name] = e.target.value
+    this.setState({value: e.target.value}, () => console.log(this.state.value));
+  }
+  
+  createSelectInput = (node, name) => {
+  // lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
+   return <div>
+     <label>Pick your favorite flavor: </label>
+      <select value={this.state.value} onChange={(e) => this.handleSelectChange(node, name, e)}>
+        <option value="lowpass">lowpass</option>
+        <option value="highpass">highpass</option>
+        <option value="bandpass">bandpass</option>
+        <option value="lowshelf">lowshelf</option>
+        <option value="highshelf">highshelf</option>
+        <option value="peaking">peaking</option>
+        <option value="notch">notch</option>
+        <option value="allpass">allpass</option>
+      </select>
+  </div>
+  
+    // let stringInputLabel = document.createElement("label");
+    // stringInputLabel.textContent = name;
+    // let stringInput = document.createElement("input");
+    // stringInput.value = val;
+    // stringInput.onchange = _ => node[name] = stringInput.value;
+  
+    // return [stringInputLabel, stringInput];
+  }
 
   render() {
     const{node, name} = this.props;

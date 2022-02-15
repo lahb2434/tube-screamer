@@ -14,11 +14,47 @@ export default class AmpAndEffectsContainer extends Component {
       const audioContext = new AudioContext();
       const effect = new Tuna(audioContext);
       let pedals = this.createPedals(effect)
+      this.setupContext(pedals, audioContext)
       this.setState({
         ...this.state, 
         audioContext: audioContext, 
         effect: effect,
         pedals: pedals})
+    }
+
+    setupContext = async (pedals, audioContext) => {
+      const guitar = await this.getGuitar()
+      
+      if (audioContext.state === 'suspended') {
+        await audioContext.resume()
+      }
+      const source = audioContext.createMediaStreamSource(guitar)
+      
+      let previousNode = source
+      pedals.forEach(node => {
+        console.log(previousNode)
+          previousNode.connect(node)
+          previousNode = node
+      })
+      previousNode.connect(audioContext.destination)
+      console.log('success')
+        // .connect(bassEQ)
+        // .connect(midEQ)
+        // .connect(trebleEQ)
+        // .connect(gainNode)
+        // .connect(analyserNode)
+        // .connect(context.destination)
+    }
+
+    getGuitar = () => {
+      return navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: false,
+          autoGainControl: false,
+          noiseSuppression: false,
+          latency: 0
+        }
+      })
     }
 
     createPedals = (effect) => {
@@ -29,7 +65,7 @@ export default class AmpAndEffectsContainer extends Component {
     }
 
   render() {
-  return <div>
+  return <div className='mb-3'>
     <Effects pedals={this.state.pedals}/>
   </div>;
   }

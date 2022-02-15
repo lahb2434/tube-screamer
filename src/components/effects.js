@@ -11,7 +11,7 @@ export default class Effects extends Component {
     if(!this.props.pedals.length){
       return null
     } else {
-      return <div className="effects pb-5">
+      return <div className="effects d-flex flex-wrap justify-content-center">
         {this.showPedals(this.props.pedals)}
       </div>
     }
