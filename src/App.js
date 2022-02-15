@@ -1,5 +1,5 @@
 import SpotifyOauth from './components/authorization/spotifyOAuth'
-import '../public/App.css';
+import './App.css';
 
 
 function App() {

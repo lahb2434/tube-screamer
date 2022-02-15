@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 export default class Control extends Component {
   
   state = {
-    value: true
+    value: typeof this.props.node.defaults[this.props.name].value == 'boolean' ? true : this.props.node.defaults[this.props.name].value 
   }
 
   renderControl = (node,name,controlDefaults) => {
@@ -24,9 +24,22 @@ export default class Control extends Component {
     this.setState({value: newValue})
   }
 
+  // numberManagement = (num) => {
+  //   if(isNaN(num)){ 
+  //     num = num.value
+  //   }
+  //   if(!Number.isInteger(num)){
+  //     const newNum = num.toFixed(1)
+  //     num = parseFloat(newNum)
+  //   }
+  //   return num
+  // }
+
   createSlider = (node, name, min, max, type) => {
+  //  const nodeValue = this.numberManagement(node[name]) 
    return <div>
       <label>{name}</label>
+      <span>{parseInt(this.state.value)}</span>
       {/* need to work on changing value of state, finished */}
       <input 
         type="range" 
@@ -36,7 +49,6 @@ export default class Control extends Component {
         step={type === 'float' ? (max - min) / 1000 : 1} 
         onInput={(e) => this.handleSliderChange(node, name, type, e)}
         />
-      <span>{this.state.value}</span>
     </div>
   }
 

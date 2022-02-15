@@ -38,12 +38,6 @@ export default class AmpAndEffectsContainer extends Component {
       })
       previousNode.connect(audioContext.destination)
       console.log('success')
-        // .connect(bassEQ)
-        // .connect(midEQ)
-        // .connect(trebleEQ)
-        // .connect(gainNode)
-        // .connect(analyserNode)
-        // .connect(context.destination)
     }
 
     getGuitar = () => {
@@ -58,16 +52,17 @@ export default class AmpAndEffectsContainer extends Component {
     }
 
     createPedals = (effect) => {
-      const nodeTypes = ['Chorus', 'Compressor', 'Delay', 'Filter', 'Overdrive', 'Panner', 'Phaser', 'Tremolo', 'WahWah'];
+      const nodeTypes = ['Gain', 'Chorus', 'Compressor', 'Delay', 'Filter', 'Overdrive', 'Panner', 'Phaser', 'Tremolo', 'WahWah'];
       return nodeTypes.map( newEffect => {
         return new effect[newEffect]({ bypass: true })
       })
     }
 
   render() {
-  return <div className='mb-3'>
+  return <>
     <Effects pedals={this.state.pedals}/>
-  </div>;
+    <div style={{ height: "10vh" }}></div>
+  </>;
   }
 
 }

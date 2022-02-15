@@ -10,7 +10,7 @@ export default class Pedal extends Component {
     }
 
   render() {
-    return <div className='pedal m-2 p-1 square border border-2 border-dark rounded' >
+    return <div className='pedal' >
       <label>{this.props.pedal.name}</label>
       {this.createPedalControls(this.props.pedal)}
       </div>;
