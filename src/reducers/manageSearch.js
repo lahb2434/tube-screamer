@@ -7,7 +7,8 @@ export default function manageSearch(state = {}, action) {
       case "SELECT_TRACK":
         return {selectTrack: action.trackUri}
 
-      
+      case "ACCESS_TOKEN":
+        return {accessToken: action.accessToken}
        
       default:
         return state

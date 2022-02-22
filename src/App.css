@@ -1,17 +1,16 @@
 
-body {
-  background-color: darkgray;
-}
+
 
 .pedal {
-  margin: 40px;
-  padding: 10px;
+  margin: 5px;
+  padding: 20px;
   border: 5px outset;
   border-color: gray;
   border-radius: 10px;
   -webkit-box-shadow: inset 0px 0px 50px 3px rgba(224, 14, 14, 0.73); 
   box-shadow: inset 0px 0px 50px 3px rgba(0,0,0,0.73);
 }
+
 input[type="range"] {
   -webkit-appearance: none;
   width: 100%;

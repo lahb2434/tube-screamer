@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios' 
-import Login from'./login.js'
-import Dashboard from '../dashboard'
-
+import axios from 'axios'
+import { connect } from 'react-redux';
+import { Navigate } from "react-router-dom";
+import Login from'./login.js';
+import Dashboard from '../dashboard';
 
 const code = new URLSearchParams(window.location.search).get('code')
 
@@ -74,6 +75,15 @@ export default class SpotifyOauth extends Component {
   }
 
   render() {
+    // const {accessToken} = this.state;
+
+    // if(accessToken){
+    //   this.props.accessToken(accessToken)
+    //   return <Navigate to='/dashboard' />
+    // }
+
+    // return <Login AUTH_URL={AUTH_URL} />
+
     return (
     <>
      {!this.state.accessToken ? <Login AUTH_URL={AUTH_URL} /> : <Dashboard accessToken={this.state.accessToken}/>}
@@ -82,3 +92,11 @@ export default class SpotifyOauth extends Component {
     )
   }
 }
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     accessToken: accessToken => dispatch({type: "ACCESS_TOKEN", accessToken}),
+//   } 
+// }
+
+// export default connect(null, mapDispatchToProps)(SpotifyOauth)

@@ -32,7 +32,6 @@ export default class AmpAndEffectsContainer extends Component {
       
       let previousNode = source
       pedals.forEach(node => {
-        console.log(previousNode)
           previousNode.connect(node)
           previousNode = node
       })

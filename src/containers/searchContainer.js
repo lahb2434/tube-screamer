@@ -5,7 +5,7 @@ import TrackSearchResults from '../components/search/trackSearchResults'
 
 
 
-export class SearchContainer extends Component {
+class SearchContainer extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     Object.entries(this.props).forEach(([key, val]) =>

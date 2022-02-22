@@ -39,7 +39,7 @@ export default class Control extends Component {
   //  const nodeValue = this.numberManagement(node[name]) 
    return <div>
       <label>{name}</label>
-      <span>{parseInt(this.state.value)}</span>
+      <span>{parseFloat(this.state.value.toFixed(1))}</span>
       {/* need to work on changing value of state, finished */}
       <input 
         type="range" 
