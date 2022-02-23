@@ -2,13 +2,14 @@
 export default function manageSearch(state = {}, action) {
     switch(action.type) {
       case "SEARCH_RESULTS":
-        return {searchQuery: action.results}
+        return {...state, searchQuery: action.results}
 
       case "SELECT_TRACK":
-        return {selectTrack: action.trackUri}
+        delete state.searchQuery
+        return {...state, selectTrack: action.trackUri}
 
       case "ACCESS_TOKEN":
-        return {accessToken: action.accessToken}
+        return {...state, accessToken: action.accessToken}
        
       default:
         return state

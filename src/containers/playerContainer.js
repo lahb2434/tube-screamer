@@ -13,8 +13,8 @@ class PlayerContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    trackUri: state.selectTrack, 
-    // accessToken: state.accessToken
+    accessToken: state.accessToken,
+    trackUri: state.selectTrack,  
   }
 }
 

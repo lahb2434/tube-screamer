@@ -19,7 +19,8 @@ const AUTH_URL = "https://accounts.spotify.com/authorize?" +
     scope: scope,
   }).toString();
 
-export default class SpotifyOauth extends Component {
+// export default 
+class SpotifyOauth extends Component {
 
   state = {
     accessToken: '',
@@ -75,28 +76,28 @@ export default class SpotifyOauth extends Component {
   }
 
   render() {
-    // const {accessToken} = this.state;
+    const {accessToken} = this.state;
 
-    // if(accessToken){
-    //   this.props.accessToken(accessToken)
-    //   return <Navigate to='/dashboard' />
-    // }
+    if(accessToken){
+       this.props.accessToken(accessToken)
+       return <Navigate to='/dashboard' />
+    }
 
-    // return <Login AUTH_URL={AUTH_URL} />
+    return <Login AUTH_URL={AUTH_URL} />
 
-    return (
-    <>
-     {!this.state.accessToken ? <Login AUTH_URL={AUTH_URL} /> : <Dashboard accessToken={this.state.accessToken}/>}
+    // return (
+    // <>
+    //  {!this.state.accessToken ? <Login AUTH_URL={AUTH_URL} /> : <Dashboard accessToken={this.state.accessToken}/>}
      
-    </>
-    )
+    // </>
+    // )
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     accessToken: accessToken => dispatch({type: "ACCESS_TOKEN", accessToken}),
-//   } 
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    accessToken: accessToken => dispatch({type: "ACCESS_TOKEN", accessToken}),
+  } 
+}
 
-// export default connect(null, mapDispatchToProps)(SpotifyOauth)
+export default connect(null, mapDispatchToProps)(SpotifyOauth)

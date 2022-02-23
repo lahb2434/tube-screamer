@@ -24,7 +24,7 @@ class SearchContainer extends Component {
     return (
       <>
         <SearchBar searchQuery={this.props.searchQuery}/>
-        <TrackSearchResults results={this.props.results} selectTrack={this.props.selectTrack}/>
+        <TrackSearchResults results={this.props.results} selectTrack={this.props.selectTrack} />
       </>
     )
   }
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     searchQuery: results => dispatch({type: "SEARCH_RESULTS", results}),
-    selectTrack: trackUri => dispatch({type: "SELECT_TRACK", trackUri})
+    selectTrack: trackUri => dispatch({type: "SELECT_TRACK", trackUri}),
   } 
 }
 

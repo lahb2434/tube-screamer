@@ -2,7 +2,6 @@
 import SpotifyPlayer from 'react-spotify-web-playback'
 
 export default function player({accessToken, trackUri}) {
-  
   return <div className="fixed-bottom">
     <SpotifyPlayer
       autoPlay={true}
@@ -18,7 +17,6 @@ export default function player({accessToken, trackUri}) {
         trackNameColor: '#fff',
       }}
     />
-
   </div>;
 }
 

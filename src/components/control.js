@@ -24,17 +24,6 @@ export default class Control extends Component {
     this.setState({value: newValue})
   }
 
-  // numberManagement = (num) => {
-  //   if(isNaN(num)){ 
-  //     num = num.value
-  //   }
-  //   if(!Number.isInteger(num)){
-  //     const newNum = num.toFixed(1)
-  //     num = parseFloat(newNum)
-  //   }
-  //   return num
-  // }
-
   createSlider = (node, name, min, max, type) => {
   //  const nodeValue = this.numberManagement(node[name]) 
    return <div>
@@ -88,14 +77,6 @@ export default class Control extends Component {
         <option value="allpass">allpass</option>
       </select>
   </div>
-  
-    // let stringInputLabel = document.createElement("label");
-    // stringInputLabel.textContent = name;
-    // let stringInput = document.createElement("input");
-    // stringInput.value = val;
-    // stringInput.onchange = _ => node[name] = stringInput.value;
-  
-    // return [stringInputLabel, stringInput];
   }
 
   render() {

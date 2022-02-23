@@ -15,7 +15,7 @@ export default class Dashboard extends Component {
           <SearchContainer />
         </Container>
         <AmpAndEffectsContainer />
-        <PlayerContainer accessToken={this.props.accessToken}/>
+        <PlayerContainer /*accessToken={this.props.accessToken}*/ />
       </>
     )
   }
