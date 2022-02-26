@@ -18,8 +18,6 @@ class SearchContainer extends Component {
     }
   }
 
-  
-
   render() { 
     return (
       <>

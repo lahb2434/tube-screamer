@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Container } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import AmpAndEffectsContainer from '../containers/ampAndEffectsContainer'
+import AmpAndEffectsContainer from '../containers/effectsContainer'
 import SearchContainer from '../containers/searchContainer'
 import PlayerContainer from '../containers/playerContainer'
 
@@ -15,7 +14,7 @@ export default class Dashboard extends Component {
           <SearchContainer />
         </Container>
         <AmpAndEffectsContainer />
-        <PlayerContainer /*accessToken={this.props.accessToken}*/ />
+        <PlayerContainer />
       </>
     )
   }

@@ -5,7 +5,7 @@ import { createStore } from 'redux'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App';
-import manageSearch from './reducers/manageSearch';
+import manageSearch from './reducers/manageSpotify';
 import Dashboard from './components/dashboard'
 
 const store = createStore(manageSearch, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

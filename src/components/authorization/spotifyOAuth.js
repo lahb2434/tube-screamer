@@ -3,7 +3,6 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 import { Navigate } from "react-router-dom";
 import Login from'./login.js';
-import Dashboard from '../dashboard';
 
 const code = new URLSearchParams(window.location.search).get('code')
 

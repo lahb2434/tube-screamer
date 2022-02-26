@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Effects from '../components/effects'
+import Effects from '../components/effects/effects'
 const Tuna = require('tunajs')
 
 export default class AmpAndEffectsContainer extends Component {
