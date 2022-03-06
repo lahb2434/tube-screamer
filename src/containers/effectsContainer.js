@@ -69,5 +69,4 @@ export default class AmpAndEffectsContainer extends Component {
         </>
       }
   }
-
 }
