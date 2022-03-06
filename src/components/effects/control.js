@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 
 export default class Control extends Component {
+
+  //I think I need to move all of this to its own container
+  //Control Container
   
   state = {
     value: typeof this.props.node.defaults[this.props.name].value == 'boolean' ? true : this.props.node.defaults[this.props.name].value 

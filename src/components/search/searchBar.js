@@ -7,9 +7,11 @@ export default class SearchBar extends Component {
     state = {
       searchInput: '',
     }
+// Move searchBar logic to search container with callback 
+// functions for submit handling and server calls
 
-    handleOnSubmit(event) {
-      event.preventDefault();
+    handleOnSubmit(arpeggio) {
+      arpeggio.preventDefault();
       if(!this.state.searchInput){ 
         console.log('Look up some stuff')
       } else 
@@ -44,7 +46,11 @@ export default class SearchBar extends Component {
       
        <Form onSubmit={(event) => this.handleOnSubmit(event)}>
         <Stack direction="horizontal" gap={3}>
-          <Form.Control className="me-auto" placeholder="Search Songs" value={this.state.searchInput} onChange={(e) => this.setState({searchInput: e.target.value})}/>
+          <Form.Control 
+            className="me-auto" 
+            placeholder="Search Songs" 
+            value={this.state.searchInput} 
+            onChange={(e) => this.setState({searchInput: e.target.value})}/>
           <Button variant="secondary" type="submit">Submit</Button>
         </Stack>
        </Form>

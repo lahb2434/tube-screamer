@@ -3,10 +3,8 @@ import { connect } from 'react-redux'
 import SearchBar from '../components/search/searchBar'
 import TrackSearchResults from '../components/search/trackSearchResults'
 
-
-
 class SearchContainer extends Component {
-
+  //this function tells me when something updates in the console, used it to debug
   componentDidUpdate(prevProps, prevState) {
     Object.entries(this.props).forEach(([key, val]) =>
       prevProps[key] !== val && console.log(`Prop '${key}' changed`)

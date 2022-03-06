@@ -19,7 +19,13 @@ const AUTH_URL = "https://accounts.spotify.com/authorize?" +
   }).toString();
 
 // export default 
+
 class SpotifyOauth extends Component {
+
+// Do I have to save any of this into state? Also does the 
+// automated refresh function have to even exist on front end,
+// or move to server side?
+// Place all logic into authorizationContainer? 
 
   state = {
     accessToken: '',
@@ -51,7 +57,7 @@ class SpotifyOauth extends Component {
       })
       .catch(err => {
         console.log(err)
-        // window.location = '/'
+        window.location = '/'
       })
     }, (this.state.expiresIn - 300) * 1000)
   };
@@ -61,7 +67,7 @@ class SpotifyOauth extends Component {
       code
     })
     .then(response => {
-      window.history.pushState({}, null, '/')
+      // window.history.pushState({}, null, '/')
       let res = response.data
       this.setState({ 
         expiresIn: res.expiresIn, 
@@ -70,7 +76,7 @@ class SpotifyOauth extends Component {
     })
     .catch(err => {
       console.log(err)
-      // window.location = '/'
+      window.location = '/'
     })
   }
 

@@ -12,6 +12,7 @@ class PlayerContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+  debugger;
   return {
     accessToken: state.accessToken,
     trackUri: state.selectTrack,  
