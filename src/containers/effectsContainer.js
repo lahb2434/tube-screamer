@@ -1,15 +1,10 @@
 import React, {Component} from 'react';
-import Effects from '../components/effects/effects'
 import Pedal from '../components/effects/pedal'
 const Tuna = require('tunajs')
 
 export default class AmpAndEffectsContainer extends Component {
-  //Do I need this state? I dont think I do
-  //Consider deleting state and see what happens
 
   state = {
-    // audioContext: null,
-    // effect: null,
     pedals: [],
   }
     
@@ -20,8 +15,6 @@ export default class AmpAndEffectsContainer extends Component {
       this.setupContext(pedals, audioContext)
       this.setState({
         ...this.state, 
-        // audioContext: audioContext, 
-        // effect: effect,
         pedals: pedals})
     }
 
@@ -76,10 +69,6 @@ export default class AmpAndEffectsContainer extends Component {
         <div style={{ height: "10vh" }}></div>
         </>
       }
-  // return <>
-  //   <Effects pedals={this.state.pedals}/>
-  //   <div style={{ height: "10vh" }}></div>
-  // </>;
   }
 
 }
