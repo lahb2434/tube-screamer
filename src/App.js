@@ -1,10 +1,9 @@
-import SpotifyOauth from './containers/loginContainer'
+import LoginContainer from './containers/loginContainer'
 import './App.css';
-
 
 function App({persistor}) {
   persistor.purge()
-  return <SpotifyOauth  />
+  return <LoginContainer  />
 }
 
 export default App;
