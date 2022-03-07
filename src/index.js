@@ -25,12 +25,13 @@ const persistedReducer = persistReducer(persistConfig, manageSearch)
 const store = createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 const persistor = persistStore(store)
 
+
 ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter> 
          <Routes>
-           <Route exact path="/" element={<App />} />
+           <Route exact path="/" element={<App persistor={persistor}/>} />
            <Route path="/dashboard" element={<Dashboard />} />
          </Routes>      
         </BrowserRouter>
