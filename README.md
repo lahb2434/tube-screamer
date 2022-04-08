@@ -36,8 +36,6 @@ App is also to be used in conjunction with hardware interface for converting ana
 
 To stream with Spotify user is required to have Premium account.
 
-## Usage
-
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
