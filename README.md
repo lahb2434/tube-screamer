@@ -1,34 +1,41 @@
-# Foobar
+# Tube Screamer
 
-Foobar is a Python library for dealing with word pluralization.
+A Guitar effects pedal board with music streaming capablities using the [Spotify Web API.](https://developer.spotify.com/documentation/web-api/) Uses Tuna.js and Web Audio API for the effects pedals. Utilizing an audio interface user can send analog guitar signal through pedal board and manipulate sound to suit their playing style.
+
+Guitar effects included in app
+* Gain 
+* Chorus 
+* Compressor 
+* Delay 
+* Filter 
+* Overdrive 
+* Panner 
+* Phaser 
+* Tremolo 
+* WahWah
+
+Use search bar to stream music on player using user's Spotify premium account.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Install using [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 ```bash
-pip install foobar
+run $ npm install
 ```
+Create .env file<br>
+Set Spotify Web API Client_ID and Client_Secret in .env file
+
+```
+CLIENT_ID = 02ee4d58dclientID20aab88838
+CLIENT_SECRET = 6a15d74dclientSecret4a58528
+```
+To get Client_ID and Client_Secret navigate to [Spotify Web API](https://developer.spotify.com/dashboard/applications), login or create an account, then click on the create an app button, follow prompts.
 
 ## Usage
 
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
-
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
