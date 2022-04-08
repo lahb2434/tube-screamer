@@ -1,6 +1,6 @@
 # Tube Screamer
 
-A Guitar effects pedal board with music streaming capablities using the [Spotify Web API.](https://developer.spotify.com/documentation/web-api/) Uses Tuna.js and Web Audio API for the effects pedals. Utilizing an audio interface user can send analog guitar signal through pedal board and manipulate sound to suit their playing style.
+A Guitar effects pedal board with music streaming capablities using the [Spotify Web API.](https://developer.spotify.com/documentation/web-api/) Uses Tuna.js and Web Audio API for the effects pedals. Utilizing an audio interface user can send analog guitar signal through pedal board and manipulate sound to suit their playing style. Use search bar to stream music on player using user's Spotify premium account.
 
 Guitar effects included in app
 * Gain 
@@ -14,7 +14,7 @@ Guitar effects included in app
 * Tremolo 
 * WahWah
 
-Use search bar to stream music on player using user's Spotify premium account.
+
 
 ## Installation
 
