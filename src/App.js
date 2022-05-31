@@ -1,9 +1,11 @@
 import LoginContainer from './containers/loginContainer'
+import Dashboard from './components/dashboard'
 import './App.css';
 
 function App({persistor}) {
   persistor.purge()
-  return <LoginContainer  />
+  return <Dashboard />
+  // return <LoginContainer  />
 }
 
 export default App;
