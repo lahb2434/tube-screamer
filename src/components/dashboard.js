@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import AmpAndEffectsContainer from '../containers/effectsContainer'
 import SearchContainer from '../containers/searchContainer'
 import PlayerContainer from '../containers/playerContainer'
+import LoginContainer from '../containers/loginContainer'
 
 
 export default class Dashboard extends Component {
@@ -14,7 +15,8 @@ export default class Dashboard extends Component {
           <SearchContainer />
         </Container>
         <AmpAndEffectsContainer />
-        <PlayerContainer />
+        <LoginContainer />
+        {/* <PlayerContainer /> */}
       </>
     )
   }

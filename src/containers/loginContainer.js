@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { Navigate } from "react-router-dom";
-import Login from'../components/authorization/login.js';
+import Login from '../components/authorization/login';
+import PlayerContainer from '../containers/playerContainer';
 
 const code = new URLSearchParams(window.location.search).get('code')
 
@@ -38,10 +39,11 @@ class LoginContainer extends Component {
   }
 
   getAuth = () => {
-    axios.post('http://localhost:8008/login', {
+    axios.post('http://localhost:8008/login', {  
       code
     })
     .then(response => {
+      debugger; 
       let res = response.data
       this.setState({ 
         expiresIn: res.expiresIn, 
@@ -71,8 +73,9 @@ class LoginContainer extends Component {
     const {accessToken} = this.state;
     
     if(accessToken){
-       this.props.accessToken(accessToken)
-       return <Navigate to='/dashboard' />
+      this.props.accessToken(accessToken)
+      return <PlayerContainer />
+      //  return <Navigate to='/dashboard' />
     }
     return <Login AUTH_URL={AUTH_URL} />
   }
